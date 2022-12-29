@@ -30,7 +30,7 @@ export const Login =() => {
                                                 </ul>
                                             </div>
                                             <div className="card hover-other message-login">
-                                                <Card cName="card-body" titulo="Bienvenido a Athenea" texto="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt voluptatem, harum amet fuga aperiam rerum in aspernatur, aut reprehenderit impedit totam dicta eos officia cupiditate. Earum quaerat eum pariatur laudantium."/>
+                                                <Card cName="card-body" title="Bienvenido a Athenea" text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt voluptatem, harum amet fuga aperiam rerum in aspernatur, aut reprehenderit impedit totam dicta eos officia cupiditate. Earum quaerat eum pariatur laudantium."/>
                                             </div>
                                         </div>
                                     </div>

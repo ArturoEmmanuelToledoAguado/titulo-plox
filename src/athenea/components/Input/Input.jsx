@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const Input = ({Tipo,Holder}) =>{
+export const Input = ({type,holder}) =>{
     return (
         <>
         <div role='div' className="input-group mb-4">
@@ -8,12 +8,12 @@ export const Input = ({Tipo,Holder}) =>{
                 <i role='i' className="fa-regular fa-user" style={{color:'white'}}></i>
             </span>
         </div>
-        <input role='input' name={Holder+Tipo} type={Tipo} className="form-control" placeholder={Holder+':'} aria-label="Username" aria-describedby="basic-addon1"/>
+        <input role='input' name={holder+type} type={type} className="form-control" placeholder={holder+':'} aria-label="Username" aria-describedby="basic-addon1"/>
         </>
     )
 }
 
 Input.propTypes = {
-    Tipo: PropTypes.string.isRequired,
-    Holder: PropTypes.string.isRequired
+    type: PropTypes.string.isRequired,
+    holder: PropTypes.string.isRequired
 }

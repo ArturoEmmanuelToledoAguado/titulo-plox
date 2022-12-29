@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 
-export const Card = ({titulo, texto}) => {
+export const Card = ({title, text}) => {
   return (
     <div role='div' className="card-body">
-        <h3 role='h3'>{titulo}</h3>
-        <p role='p'>{texto}</p>
+        <h3 role='h3'>{title}</h3>
+        <p role='p'>{text}</p>
     </div>
   )
 }
 
 Card.propTypes = {
-    titulo: PropTypes.string.isRequired,
-    texto: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
 }

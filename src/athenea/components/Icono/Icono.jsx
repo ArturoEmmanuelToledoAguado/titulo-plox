@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 
-export const Icono = ({texto,Direccion}) => {
+export const Icono = ({text,direction}) => {
   return (
     <>
-    <p role='p'>{texto}</p>
-    <img role='img' className="logo" src={Direccion}  width="45"/>
+    <p role='p'>{text}</p>
+    <img role='img' className="logo" src={direction}  width="45"/>
     </>
   )
 }
 
 Icono.propTypes = {
-    texto: PropTypes.string.isRequired,
-    Direccion: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    direction: PropTypes.string.isRequired
 }

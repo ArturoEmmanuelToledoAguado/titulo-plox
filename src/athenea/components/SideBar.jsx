@@ -1,6 +1,7 @@
-import { AccountBox, FileCopy, Home, Settings, TurnedInNot } from "@mui/icons-material"
-import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography } from "@mui/material"
+import { AccountBox, FileCopy, Home, Settings } from "@mui/icons-material"
+import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography } from "@mui/material"
 import { Box } from "@mui/system"
+import { Route, Routes } from "react-router-dom"
 
 
 export const SideBar = ({drawerWidth = 120}) => {
@@ -26,11 +27,12 @@ export const SideBar = ({drawerWidth = 120}) => {
                     <Divider />
                     <List>
                         {
-                            ['Home', 'Perfil', 'My Documents', 'Configuration'].map( text => (
+                            ['Home', 'Perfil', 'My Documents', 'Acerca de'].map( text => (
                                 <ListItem
                                     key= {text}
                                     disablePadding>
                                         <ListItemButton>
+                                            
                                             <ListItemIcon>
                                                 {(text === 'Home')?
                                                     <Home />:
@@ -40,6 +42,30 @@ export const SideBar = ({drawerWidth = 120}) => {
                                                     <FileCopy />:
                                                     <Settings />
                                                     }{'  '+text}
+                                                {
+
+                                                    <Grid 
+                                                        conteiner>
+                                                        <Routes>
+                                                            <Route  path={(text === 'Home')?
+                                                                            'DocumentList'.toString():
+                                                                            (text === 'Perfil')?
+                                                                            'Profile'.toString():
+                                                                            (text === 'My Documents')?
+                                                                            'DocumentDetails'.toString():
+                                                                            'About'.toString()} 
+                                                                    element={
+                                                                        (text === 'Home')?
+                                                                            <Home />:
+                                                                            (text === 'Perfil')?
+                                                                            <AccountBox />:
+                                                                            (text === 'My Documents')?
+                                                                            <FileCopy />:
+                                                                            <Settings />
+                                                                    }/>
+                                                        </Routes>
+                                                    </Grid>
+                                                }
                                             </ListItemIcon>
                                         </ListItemButton>
                                 </ListItem>

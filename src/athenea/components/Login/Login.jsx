@@ -1,51 +1,95 @@
-import './Login.css'
-import {Formulario, Logo, Avatar, Card, Boton,Link} from '../'
+import {  Face, MarkunreadMailbox } from '@mui/icons-material';
+import { CardActions, CardContent, Card, Button, Typography, TextField, CardMedia} from '@mui/material';
+import { Grid } from '@mui/material';
+import { Boton, Input, Logo } from '../';
 
 export const Login =() => {
-    return (  
-        <section className="vh-100 bg-gradient">
-            <div className="container py-5 vh-100">
-                <div className="row d-flex justify-content-center align-items-lg-center vh-100">
-                    <div className="col-lx-10">
-                        <div className="rounded-3 text-black">
-                            <div className="row g-0">
-                                <div className="col-lg-6">
-                                    <div className="p-md-5 mx-md-4">
-                                        <div className="card shadow p-3 mb-5 rounded-5 bg-login-form">
-                                            <div className="car-body p-md-5 mx-md-4">
-                                                <Logo cName="text-center mb-5" direction='/img/mq19.png'/>
-                                                <Formulario/>
-                                                <Boton text="Siguiente"/>
-                                                <Link text="Registrarse"/>
-                                                <Link text="¿Olvido su contraseña?"/>
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div className="col-lg-6 d-flex align-items-center">
-                                    <div>
-                                        <div className="px-3 py-4 p-md-4">
-                                            <div>
-                                                <ul className="nav justify-content-center">
-                                                    <Avatar direction='img/mq16.png'/>
-                                                    <Avatar direction="img/mq17.png"/>
-                                                    <Avatar direction="img/mq18.png"/>
-                                                </ul>
-                                            </div>
-                                            <div className="card hover-other message-login">
-                                                <Card cName="card-body" title="Bienvenido a Athenea" text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt voluptatem, harum amet fuga aperiam rerum in aspernatur, aut reprehenderit impedit totam dicta eos officia cupiditate. Earum quaerat eum pariatur laudantium."/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
+  return (
+    <form action="/login" method="post">
+        <Grid 
+            container
+            noWrap
+            justifyContent= 'space-around'
+            alignItems='center'
+            sx={{mb:1}}>
+            <Grid
+                Item
+                sx={3}>
+                    <Card >
+                        <CardContent>
+                            <Grid
+                                container
+                                alignItems = 'center'
+                                justifyContent= 'center'
+                                sx= {{mb:2}}>
+                                <Logo direction='/img/mq19.png'/>
+                            </Grid>
 
-// TODO: Implementar los defaultprops
-// !Preguntar por los class -> className
+                            <Grid
+                                container
+                                alignItems = 'center'
+                                justifyContent= 'center'
+                                sx= {{mb:2}}>
+                                    <Face sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
+                                    <TextField id="username" label="Username" type= 'text' variant="outlined" />
+                            </Grid>
+                            <Grid
+                                container
+                                alignItems = 'center'
+                                justifyContent= 'center'>
+                                    <MarkunreadMailbox sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
+                                    <TextField id="password" label="Password" type= 'password' variant="outlined" />
+                            </Grid>
+                        </CardContent>
+                        <CardActions>
+                            <Grid
+                                container
+                                alignItems = 'center'
+                                justifyContent= 'center'>
+                                    <Button variant="contained">LogIn</Button>
+                            </Grid>
+                        </CardActions>
+                    </Card>
+            </Grid>
+            <Grid
+                Item
+                alignItems='center'
+                xs={5}>
+                    <Card>
+                        <Grid
+                            container
+                            justifyContent= 'space-around'>
+                            <Logo direction='/img/mq16.png'/>
+                            <Logo direction='/img/mq17.png'/>
+                            <Logo direction='/img/mq18.png'/>
+                        </Grid>
+                        <CardContent>
+                            <Typography
+                                gutterBottom
+                                variant="h3"
+                                component="div"
+                                sx={{mb:1}}>
+                                Bienvenido a Athena
+                            </Typography>
+                            <Typography
+                                variant="h5"
+                                align= 'justify'
+                                color="secondary"
+                                sx={{mb:1}}>
+                                La primera plataforma en su clase impulzada con machine learning para el análisis de plagio en sus documentos.
+                            </Typography>
+
+                            <Typography
+                                variant="subtitle1"
+                                color="text.secondary"
+                                align= 'justify'
+                                sx={{mb:1}}>
+                                La información que nos rodea es abundante y sin duda alguna de fácil acceso, llegando a facilitar las posibilidades de incurrir en plagio accidental u otros delitos, motivo por el cual nos resulta indispensable realizar una correcta interpretación de tus documentos en busca de lograr un mejor resultado, utilizando tecnologías modernas, podemos lograr nuestro objetivo sin sacrificar tiempos de espera para nuestros usuarios.
+                            </Typography>
+                        </CardContent>
+                    </Card>
+            </Grid>
+        </Grid>
+    </form>
+  );
+}

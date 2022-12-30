@@ -1,5 +1,5 @@
 import './Login.css'
-import {Formulario, Logo, Avatar, Card} from '../'
+import {Formulario, Logo, Avatar, Card, Boton,Link} from '../'
 
 export const Login =() => {
     return (  
@@ -15,6 +15,9 @@ export const Login =() => {
                                             <div className="car-body p-md-5 mx-md-4">
                                                 <Logo cName="text-center mb-5" direction='/img/mq19.png'/>
                                                 <Formulario/>
+                                                <Boton text="Siguiente"/>
+                                                <Link text="Registrarse"/>
+                                                <Link text="¿Olvido su contraseña?"/>
                                             </div>
                                         </div>
                                     </div>    
@@ -24,9 +27,9 @@ export const Login =() => {
                                         <div className="px-3 py-4 p-md-4">
                                             <div>
                                                 <ul className="nav justify-content-center">
-                                                    <Avatar direction='../../../../public/img/mq16.png'/>
-                                                    <Avatar direction="../../../../public/img/mq17.png"/>
-                                                    <Avatar direction="../../../../public/img/mq18.png"/>
+                                                    <Avatar direction='img/mq16.png'/>
+                                                    <Avatar direction="img/mq17.png"/>
+                                                    <Avatar direction="img/mq18.png"/>
                                                 </ul>
                                             </div>
                                             <div className="card hover-other message-login">

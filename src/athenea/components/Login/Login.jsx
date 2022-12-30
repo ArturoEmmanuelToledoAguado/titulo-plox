@@ -1,7 +1,7 @@
 import {  Face, MarkunreadMailbox } from '@mui/icons-material';
 import { CardActions, CardContent, Card, Button, Typography, TextField, CardMedia} from '@mui/material';
 import { Grid } from '@mui/material';
-import { Boton, Input, Logo } from '../';
+import { Logo } from '../';
 
 export const Login =() => {
   return (

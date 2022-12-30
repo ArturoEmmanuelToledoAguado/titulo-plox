@@ -1,3 +1,4 @@
+export * from './FileList/FileList'
 export * from './NavBar'
 export * from './SideBar'
 export * from './Avatar/Avatar'

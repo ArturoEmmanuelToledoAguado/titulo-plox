@@ -7,8 +7,8 @@ export const Input = ({type,holder}) =>{
             <span role='span' className="input-group-text" id="basic-addon1">
                 <i role='i' className="fa-regular fa-user" style={{color:'white'}}></i>
             </span>
+            <input role='input' name={holder+type} type={type} className="form-control" placeholder={holder+':'} aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <input role='input' name={holder+type} type={type} className="form-control" placeholder={holder+':'} aria-label="Username" aria-describedby="basic-addon1"/>
         </>
     )
 }

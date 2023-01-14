@@ -1,7 +1,6 @@
 import { AccountBox, FileCopy, Home, Settings } from "@mui/icons-material"
 import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import { Route, Routes } from "react-router-dom"
 import { Logo } from './'
 
 

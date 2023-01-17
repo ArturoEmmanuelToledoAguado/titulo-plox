@@ -1,5 +1,5 @@
 import { AccountBox, FileCopy, Home, Settings } from "@mui/icons-material"
-import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, Toolbar, Typography } from "@mui/material"
+import { Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar } from "@mui/material"
 import { Box } from "@mui/system"
 import { Logo } from './'
 
@@ -22,45 +22,20 @@ export const SideBar = ({drawerWidth = 120}) => {
                     </Toolbar>
                     <List>
                         {
-                            ['Home', 'Perfil', 'My Documents', 'Acerca de'].map( text => (
+                            ['Inicio', 'Perfil', 'Documentos', 'Acerca de'].map( text => (
                                 <ListItem
                                     key= {text}
                                     disablePadding>
                                         <ListItemButton>
-                                            
                                             <ListItemIcon>
-                                                {(text === 'Home')?
+                                                {(text === 'Inicio')?
                                                     <Home />:
                                                     (text === 'Perfil')?
                                                     <AccountBox />:
-                                                    (text === 'My Documents')?
+                                                    (text === 'Documentos')?
                                                     <FileCopy />:
                                                     <Settings />
                                                     }{'  '+text}
-                                                {
-
-                                                    // <Grid 
-                                                    //     conteiner>
-                                                    //     {/* <Routes>
-                                                    //         <Route  path={(text === 'Home')?
-                                                    //                         'DocumentList'.toString():
-                                                    //                         (text === 'Perfil')?
-                                                    //                         'Profile'.toString():
-                                                    //                         (text === 'My Documents')?
-                                                    //                         'DocumentDetails'.toString():
-                                                    //                         'About'.toString()} 
-                                                    //                 element={
-                                                    //                     (text === 'Home')?
-                                                    //                         <Home />:
-                                                    //                         (text === 'Perfil')?
-                                                    //                         <AccountBox />:
-                                                    //                         (text === 'My Documents')?
-                                                    //                         <FileCopy />:
-                                                    //                         <Settings />
-                                                    //                 }/>
-                                                    //     </Routes> */}
-                                                    // </Grid>
-                                                }
                                             </ListItemIcon>
                                         </ListItemButton>
                                 </ListItem>

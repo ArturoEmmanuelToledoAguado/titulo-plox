@@ -41,12 +41,11 @@ export const Login =() => {
     <form action="/login" method="post">
         <Grid 
             container
-            noWrap
             justifyContent= 'space-around'
             alignItems='center'
             sx={{mb:1}}>
             <Grid
-                Item
+                item
                 sx={3}>
                     <Card >
                         <CardContent>
@@ -64,28 +63,90 @@ export const Login =() => {
                                 justifyContent= 'center'
                                 sx= {{mb:2}}>
                                     <Face sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
-                                    <TextField id="username" label="Username" type= 'text' variant="outlined" />
+                                    <TextField
+                                        label="Correo Institucional"
+                                        type="email"
+                                        placeholder="correo@alumno.ipn.mx"
+                                        required
+                                        name='email'
+                                        value = {email}
+                                        onChange={onInputChange}
+                                        error ={!!emailValid && formSubmitted}
+                                        helperText={(formSubmitted)?emailValid:null}
+                                        fullWidth/>
+                            </Grid>
+
+                            <Grid 
+                                item 
+                                xs = {12} 
+                                sx= {{mt:2}}
+                                display= {!!errorMessage?'':'none'}>
+                                <Alert severity='error'>{errorMessage}</Alert>
                             </Grid>
                             <Grid
                                 container
                                 alignItems = 'center'
                                 justifyContent= 'center'>
                                     <MarkunreadMailbox sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
-                                    <TextField id="password" label="Password" type= 'password' variant="outlined" />
+                                    <TextField
+                                        label="Contraseña"
+                                        type="password"
+                                        placeholder="Contraseña"
+                                        required
+                                        name='password'
+                                        value = {password}
+                                        error ={!!passwordValid &&  formSubmitted}
+                                        helperText={(formSubmitted)?passwordValid:null}
+                                        onChange = {onInputChange}
+                                        fullWidth/>
                             </Grid>
                         </CardContent>
                         <CardActions>
-                            <Grid
-                                container
-                                alignItems = 'center'
-                                justifyContent= 'center'>
-                                    <Button variant="contained">LogIn</Button>
+                            <Grid container
+                                spacing={2}
+                                sx={{mb:2, mt:1}}>
+                                    <Grid item
+                                        xs = {12}
+                                        sm = {6}>
+                                    <Button 
+                                        type='submit'
+                                        variant='contained'
+                                        disabled = {isAuthenticating}
+                                        fullWidth>
+                                        Login
+                                    </Button>
+                                    </Grid>
+                                
+                                <Grid item
+                                    xs = {12}
+                                    sm = {6}>
+                                    <Button
+                                        onClick={onGoogleSignIn}
+                                        variant='contained'
+                                        disabled = {isAuthenticating}
+                                        fullWidth>
+                                            <Google />
+                                            <Typography sx = {{ ml:1}}>Google</Typography>
+                                    </Button>
+                                </Grid>
                             </Grid>
+
+                            <Grid container
+                                direction= 'row'
+                                justifyContent='end'>
+                                <Link
+                                    component={RouterLink}
+                                    color='inherit'
+                                    to="/auth/register">
+                                Registrarse
+                                </Link>
+                            </Grid>
+
                         </CardActions>
                     </Card>
             </Grid>
             <Grid
-                Item
+                item
                 alignItems='center'
                 xs={5}>
                     <Card>

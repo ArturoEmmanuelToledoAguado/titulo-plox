@@ -1,5 +1,5 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Button, Grid, Link, TextField, Typography } from "@mui/material"
+import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks'
 import { useMemo, useState } from 'react'
@@ -19,7 +19,7 @@ const formValidations = {
 }
 
 export const RegisterPage = () => {
-
+  
   let valid
   const dispatch = useDispatch()
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -65,6 +65,7 @@ export const RegisterPage = () => {
     // console.log(valid)
   }
 
+
   return (
     <AuthLayout title='Crear Cuenta'>
       <form onSubmit={onSubmit} action="">
@@ -74,17 +75,18 @@ export const RegisterPage = () => {
               label="Nombre completo"
               type="text"
               placeholder="Escribe tu nombre"
+              fullWidth
               name='displayName'
               value={displayName}
               onChange ={onInputChange}
               error ={!!displayNameValid && formSubmitted}
-              helperText={(formSubmitted)?displayNameValid:null}
-              fullWidth/>
+              helperText={(formSubmitted)?displayNameValid:null}/>
+
             <Grid
               item
               xs = {12}
               sx = {{mt:2}}
-              display= {!!!valid?'':'none'}>
+              display= {!!valid?'':'none'}>
               <Alert severity='error'>El nombre del usuario ⬆️ y el correo no coinciden ⬇️</Alert>
             </Grid>
           </Grid>
@@ -94,12 +96,13 @@ export const RegisterPage = () => {
               label="Correo Institucional"
               type="email"
               placeholder="correo@alumno.ipn.mx"
+              fullWidth
               name='email'
               value={email}
               onChange ={onInputChange}
               error ={!!emailValid && formSubmitted}
-              helperText={(formSubmitted)?emailValid:null}
-              fullWidth/>
+              helperText={(formSubmitted)?emailValid:null}/>
+
             <Grid
               item
               xs = {12}
@@ -107,6 +110,7 @@ export const RegisterPage = () => {
               display= {!!errorMessage?'':'none'}>
               <Alert severity='error'>{errorMessage}</Alert>
             </Grid>
+
           </Grid>
           
           <Grid item xs = {12} sx= {{mt:2}}>
@@ -114,15 +118,17 @@ export const RegisterPage = () => {
               label="Contraseña"
               type="password"
               placeholder="Contraseña"
+              fullWidth
               name='password'
               value={password}
               error ={!!passwordValid && formSubmitted}
               helperText={(formSubmitted)?passwordValid:null}
-              onChange ={onInputChange}
-              fullWidth/>
+              onChange ={onInputChange}/>
           </Grid>
 
           <Grid container spacing={2} sx={{mb:2, mt:1}}>
+
+            
             <Grid item xs = {12}>
               <Button disabled={isCheckingAuthentication} type='submit' variant="contained" fullWidth>
                 Crear Cuenta
@@ -131,11 +137,12 @@ export const RegisterPage = () => {
           </Grid>
 
           <Grid container direction= 'row' justifyContent='end'>
-            <Typography sx={{mr:1}}>Ya tienes cuenta?</Typography>
+          <Typography sx={{mr:1}}>Ya tienes cuenta?</Typography>
             <Link component={RouterLink} color='inherit' to="/auth/login">
               Ingresar
             </Link>
           </Grid>
+
         </Grid>
       </form>
     </AuthLayout>

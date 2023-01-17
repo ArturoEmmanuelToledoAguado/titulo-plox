@@ -2,11 +2,11 @@ import { onAuthStateChanged } from "firebase/auth"
 import { useEffect } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { AuthRoutes } from "../authentication/routes/AuthRoutes"
-import { AtheneaPage } from "../athenea/pages/AtheneaPage"
 import { CheckingAuth } from "../ui"
 import { login, logout } from "../store/auth"
 import { FirebaseAuth } from "../firebase"
 import { useDispatch, useSelector } from "react-redux"
+import { AtheneaRoutes } from "../athenea/routes/AtheneaRoutes"
 
 
 export const AppRouter = () => {
@@ -29,7 +29,7 @@ export const AppRouter = () => {
   return (
     <Routes>
         {
-        (status === 'authenticated')? <Route path='/*' element={<AtheneaPage/>}/>:<Route path='/auth/*' element={<AuthRoutes/>}/>
+        (status === 'authenticated')? <Route path='/*' element={<AtheneaRoutes/>}/>:<Route path='/auth/*' element={<AuthRoutes/>}/>
       }
 
       <Route path='/*' element={<Navigate to= '/auth/login'/>}/>

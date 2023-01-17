@@ -10,25 +10,12 @@ export const CheckingAuth = () => {
         justifyContent= 'center'
         sx= {{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4}}>
 
-        {/* <Grid
-            container
-            direction = 'row'
-            justifyContent = 'center'>
-                
-            <img
-                style = {{ width: 163}}
-                alt= 'logo athenea'
-                src= 'public\img\logo.png'
-            />
-        </Grid> */}
-
         <Grid
             container
             direction = 'row'
             justifyContent = 'center'>
-                <CircularProgress color='inherit' />
+            <CircularProgress color='inherit' />
         </Grid>
-
 
     </Grid>
   )

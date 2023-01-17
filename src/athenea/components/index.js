@@ -1,8 +1,7 @@
-export * from './FileList/FileList'
-export * from './NavBar'
-export * from './SideBar'
-export * from './Avatar/Avatar'
-export * from './Input/Input'
-export * from './Logo/Logo'
-export * from './Login/Login'
-export * from './Profile/Profile'
+export { Avatar } from './Avatar/Avatar';
+export { Input } from './Input/Input';
+export { Login } from './Login/Login';
+export { Logo } from './Logo/Logo';
+export { NavBar } from './NavBar';
+export { Profile } from './Profile/Profile';
+export { SideBar } from './SideBar';

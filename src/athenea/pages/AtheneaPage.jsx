@@ -1,14 +1,14 @@
-import { FileList, Login, Profile } from "../components/index"
 import { IconButton } from "@mui/material"
 import { AtheneaLayout } from "../layout/AtheneaLayout"
-import { NoteView, NothingSelectedView } from "../views"
-import { AddOutlined } from "@mui/icons-material"
+import { FileList, NoteView, NothingSelectedView } from "../views"
+import { AddOutlined, FileUpload } from "@mui/icons-material"
 
 export const AtheneaPage = () => {
   return (
     <AtheneaLayout>
       {/* <NoteView/> */}
-      <NothingSelectedView />
+      {/* <NothingSelectedView /> */}
+      <FileList />
 
       <IconButton
         size='large'
@@ -20,7 +20,7 @@ export const AtheneaPage = () => {
           right: 50,
           bottom: 50
         }}>
-          <AddOutlined sx = {{ fontSize: 30 }} />
+          <FileUpload sx = {{ fontSize: 30 }} />
       </IconButton>
     </AtheneaLayout>
   )

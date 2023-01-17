@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useForm } from '../../hooks'
-import { Face, Google, MarkunreadMailbox } from '@mui/icons-material'
+import { Face, Google, MarkunreadMailbox, Password } from '@mui/icons-material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -42,8 +42,8 @@ export const LoginPage = () => {
   }
 
   return (
-    <AuthLayout title='Login'>
-      <form action="" onSubmit={onSubmit}>
+    <AuthLayout title='Ingresar'>
+      <form action="" onSubmit={onSubmit} className=" animate__animated animate__fadeIn animate__faster">
       <Grid 
             container
             justifyContent= 'space-around'
@@ -51,7 +51,7 @@ export const LoginPage = () => {
             sx={{mb:1}}>
             <Grid
                 item
-                sx={3}>
+                xs={4}>
                     <Card >
                         <CardContent>
                             <Grid
@@ -67,9 +67,9 @@ export const LoginPage = () => {
                                 alignItems = 'center'
                                 justifyContent= 'center'
                                 sx= {{mb:2}}>
-                                  <Face sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
+                                  <MarkunreadMailbox sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
                                   <Grid item
-                                    sx={2}>
+                                    xs={8}>
                                       <TextField
                                           label="Correo Institucional"
                                           type="email"
@@ -95,9 +95,9 @@ export const LoginPage = () => {
                                 container
                                 alignItems = 'center'
                                 justifyContent= 'center'>
-                                    <MarkunreadMailbox sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
+                                    <Password sx={{ fontSize: 40, color: 'secondary', mr:2 }}/>
                                     <Grid item
-                                    sx={2}>
+                                    xs={8}>
                                       <TextField
                                           label="Contraseña"
                                           type="password"
@@ -139,7 +139,7 @@ export const LoginPage = () => {
                             
                         </CardActions>
                         <Grid container
-                          sx={{mt:2, mr:8}}
+                          xs={{mt:2}}
                           alignItems = 'center'>
                             <Link
                                 component={RouterLink}
@@ -153,7 +153,7 @@ export const LoginPage = () => {
             <Grid
                 item
                 alignItems='center'
-                xs={5}>
+                xs={6}>
                     <Card>
                         <Grid
                             container

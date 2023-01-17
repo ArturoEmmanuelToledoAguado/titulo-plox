@@ -6,6 +6,7 @@ export const FileList = () => {
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {[1, 2, 3].map((value) => (
           <ListItem
+          className="animate__animated animate__fadeIn animate__faster"
             key={value}
             disableGutters>
             <Button

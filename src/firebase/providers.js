@@ -53,3 +53,7 @@ export const loginWithEmailPassword = async({email, password}) => {
         return {ok: false, errorMessage: 'El nombre del usuario ⬆️ o el correo son incorrectos ⬇️', errorCode: error.code}
     }
 }
+
+export const logoutFirebase = async() => {
+    return await FirebaseAuth.signOut()
+}

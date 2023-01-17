@@ -1,4 +1,3 @@
-import { FileList } from "../components"
 import { Grid} from "@mui/material"
 export const NoteView = () => {
   return (
@@ -8,7 +7,6 @@ export const NoteView = () => {
         alignItems='center'
         sx={{mb:1}}>
 
-        <FileList  fullWidth/>
     </Grid>
   )
 }

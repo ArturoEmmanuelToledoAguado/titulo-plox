@@ -7,7 +7,8 @@ export const NoteView = () => {
         justifyContent='space-between'
         alignItems='center'
         sx={{mb:1}}>
-            <FileList  fullWidth/>
+
+        <FileList  fullWidth/>
     </Grid>
   )
 }

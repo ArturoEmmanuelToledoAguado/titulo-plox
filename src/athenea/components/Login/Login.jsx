@@ -1,9 +1,42 @@
-import {  Face, MarkunreadMailbox } from '@mui/icons-material';
-import { CardActions, CardContent, Card, Button, Typography, TextField} from '@mui/material';
-import { Grid } from '@mui/material';
+import { useMemo, useState } from 'react'
+import { useForm } from '../../../hooks';
+import { Google } from '@mui/icons-material'
+import { Link as RouterLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Face, MarkunreadMailbox } from '@mui/icons-material';
+import { CardActions, CardContent, Card, Button, Typography, TextField, Grid} from '@mui/material';
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../../store/auth'
 import { Logo } from '../';
 
+const formData = {
+    email: '',
+    password: ''
+  }
+  
+const formValidations = {
+    email: [ (value) => value.includes('.ipn.mx') && value.length >= 8 && (value.includes('docente') || value.includes('alumno')), 'El correo debe pertenecer al instituto'],
+    password: [ (value) => value.length >= 8 , 'El password debe tener más de 8 letras'],
+}
+
 export const Login =() => {
+
+    const {status, errorMessage} = useSelector(state => state.auth)
+    const dispatch = useDispatch()
+    const [fromSubmitted, setFromSubmitted] = useState(false)
+    const {formState, isFormValid, email, password, emailValid, passwordValid, onInputChange} = useForm(formData, formValidations)
+    const isAuthenticating = useMemo(() => status === 'authenticated', [status])
+    const onSubmit = event => {
+        event.preventDefault()
+        // dispatch(checkingAuthentication(email, password))
+        setFormSubmitted(true)
+        if (!isFormValid) return;
+        dispatch(startLoginWithEmailPassword( {email, password} ))
+    }
+
+    const onGoogleSignIn = () => {
+        dispatch(startGoogleSignIn())
+    }
+
   return (
     <form action="/login" method="post">
         <Grid 

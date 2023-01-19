@@ -32,39 +32,11 @@ export const RegisterPage = () => {
   const {formState, displayName, email, password, onInputChange,
     isFormValid, displayNameValid, emailValid, passwordValid} = useForm( formData, formValidations)
 
-  const validUserAndEmail = (displayName, email) => {
-    let regex = /(\d+)/g;
-    const newname = displayName.toLowerCase().split(' ')
-    if(newname.length <=2) return false
-    const newEmailTest = email.substr(1, (email.indexOf(email.match(regex)[0])-2))
-    
-    let searchLastName = 0
-    for( const value of newname){
-      searchLastName++
-      if(value === newEmailTest){
-        break
-      }
-    }
-    let validate
-    if(searchLastName === 1){ //1 y 2
-      validate = newname[searchLastName+1].substr(0, 1) + newname[searchLastName*0] + newname[searchLastName].substr(0, 1)
-    }else if((searchLastName === 2) || (searchLastName === 3)){ //2 y 3
-      validate = newname[searchLastName*0].substr(0, 1) + newname[searchLastName-1] + newname[searchLastName].substr(0, 1)
-    }
-    return email.substr(0,email.search('@')).includes(validate)
-  }
-
   const onSubmit = (event) => {
     event.preventDefault()
     setFormSubmitted(true)
-    // valid = validUserAndEmail(formState.email, formState.displayName)
-    valid = isFormValid
-    valid = validUserAndEmail(displayName, email)
-    console.log(valid)
-    if (!valid) return;
+    if (!isFormValid) return;
     dispatch(startCreatingUserWithEmailPassword(formState))
-    // console.log(formState)
-    // console.log(valid)
   }
 
 
@@ -167,7 +139,7 @@ export const RegisterPage = () => {
                                     <Button disabled={isCheckingAuthentication} type='submit' variant="contained" fullWidth>
                                         Crear Cuenta
                                     </Button>
-                            </Grid>                                                      
+                            </Grid>
                         </CardActions>
                         <Grid container direction= 'row' justifyContent='end'>
                             <Typography sx={{mr:1}}>Ya tienes cuenta?</Typography>

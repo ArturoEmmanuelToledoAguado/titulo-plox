@@ -1,0 +1,1 @@
+export { validUserAndEmail } from './validUserAndEmail';

@@ -17,7 +17,7 @@ const formData = {
 const formValidations = {
   email: [ (value) => value.includes('.ipn.mx') && value.length >= 8 && (value.includes('docente') || value.includes('alumno')), 'El correo debe pertenecer al instituto'],
   password: [ (value) => value.length >= 8 , 'El password debe tener más de 8 letras'],
-  displayName : [ (value) => value.length >= 8 , 'El nombre es obligatorio y debe tener más de 8 letras']
+  displayName : [ (value) => value.split(' ').length > 2  , 'El nombre es obligatorio y debe tener al menos 2 apellidos y 1 nombre']
 }
 
 export const RegisterPage = () => {

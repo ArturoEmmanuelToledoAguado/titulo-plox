@@ -3,6 +3,14 @@ import { FirebaseAuth } from './config';
 
 const googleProvider = new GoogleAuthProvider()
 
+const validUserAndEmail = (displayName, email) => {
+    const newname = displayName.toLowerCase().split(' ')
+    const searchLastName = newname.map((element, index) => {if(element === email.substr(1, (email.indexOf(email.match(/(\d+)/g)[0])-2))) return index+1 }).filter(numero =>  Number.isInteger(numero)).pop()
+    const letter = (searchLastName === 1)?newname[searchLastName+1]:newname[searchLastName*0]
+    const lastName = (searchLastName === 1)?newname[searchLastName*0]:newname[searchLastName-1]
+    return email.substr(0,email.search('@')).includes(letter.substr(0, 1) + lastName + newname[searchLastName].substr(0, 1))
+}
+
 export const singInWithGoogle = async() => {
     try {
         const result = await signInWithPopup(FirebaseAuth, googleProvider)
@@ -36,7 +44,7 @@ export const registerUserWithEmailPassword = async({email, password, displayName
         }
     } catch (error) {
         // TODO: Errormessage se puede usar para validar cualquier cosa, inclusive pasarle un error propio
-        return {ok: false, errorMessage: 'El correo ya ha sido registrado', errorCode: error.code}
+        return {ok: false, errorMessage: (!validUserAndEmail(displayName, email))?'El nombre del usuario ⬆️ y el correo no coinciden ⬇️':'El correo ya ha sido registrado ⬇️', errorCode: error.code}
 
     }
 }

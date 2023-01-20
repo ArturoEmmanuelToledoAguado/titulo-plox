@@ -16,6 +16,7 @@ export const singInWithGoogle = async() => {
 }
 
 export const registerUserWithEmailPassword = async({email, password, displayName}) => {
+    if(!validUserAndEmail(displayName, email)) return {ok: false, errorMessage: 'El nombre ⬆️ y el correo no coinciden ⬇️'}
     try {
         const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password)
         const {uid, photoURL} = resp.user
@@ -23,7 +24,7 @@ export const registerUserWithEmailPassword = async({email, password, displayName
 
         return{ok: true, uid, photoURL, email, displayName}
     } catch (error) {
-        return {ok: false, errorMessage: (!validUserAndEmail(displayName, email))?'El nombre del usuario ⬆️ y el correo no coinciden ⬇️':'El correo ya ha sido registrado ⬇️', errorCode: error.code}
+        return {ok: false, errorMessage: 'El correo ya ha sido registrado ⬇️', errorCode: error.code}
     }
 }
 

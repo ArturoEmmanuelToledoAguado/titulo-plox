@@ -9,16 +9,16 @@ export const FileList = () => {
           className="animate__animated animate__fadeIn animate__faster"
             key={value}
             disableGutters>
-            <Button
-              color='button'
-              sx={{ width: '80%'}}>
+              <Button
+                color='button'
+                sx={{ width: '80%'}}>
                   <ListItemAvatar>
                     <Avatar>
                       <Description />
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText primary={`Tesis ${value}`}  secondary="Jan 9, 2014"/>
-            </Button>
+              </Button>
           </ListItem>
         ))}
     </List>

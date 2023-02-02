@@ -1,2 +1,2 @@
 export * from './authSlice';
-export * from './tunks';
+export { checkingAuthentication, startCreatingUserWithEmailPassword, startGoogleSignIn, startLoginWithEmailPassword, startLogout } from './tunks';

@@ -2,7 +2,14 @@ import { AccountBox, FileCopy, Home, Settings } from "@mui/icons-material"
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, Toolbar } from "@mui/material"
 import { Box } from "@mui/system"
 import { Logo } from './'
+import { SideBarItem } from "./SideBarItem"
 
+const pages = [
+    {value : 'Inicio'},
+    {value : 'Perfil'},
+    {value : 'Documentos'},
+    {value : 'Acerca de'},
+]
 
 export const SideBar = ({drawerWidth = 120}) => {
   return (
@@ -22,24 +29,7 @@ export const SideBar = ({drawerWidth = 120}) => {
                     </Toolbar>
                     <List>
                         {
-                            ['Inicio', 'Perfil', 'Documentos', 'Acerca de'].map( text => (
-                                <ListItem
-                                    key= {text}
-                                    disablePadding>
-                                        <ListItemButton>
-                                            <ListItemIcon>
-                                                {(text === 'Inicio')?
-                                                    <Home />:
-                                                    (text === 'Perfil')?
-                                                    <AccountBox />:
-                                                    (text === 'Documentos')?
-                                                    <FileCopy />:
-                                                    <Settings />
-                                                    }{'  '+text}
-                                            </ListItemIcon>
-                                        </ListItemButton>
-                                </ListItem>
-                            ))
+                            pages.map( values => (<SideBarItem key = {values.value} {...values}/>))
                         }
                     </List>
             </Drawer>

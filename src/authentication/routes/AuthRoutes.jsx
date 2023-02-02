@@ -1,7 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { LoginPage, RegisterPage } from "../pages"
 
+/**
+ * If the user is not logged in, then show them the login page. Otherwise, show them the dashboard.
+ */
 export const AuthRoutes = () => {
+  /* A React Router. */
   return (
     <Routes>
 

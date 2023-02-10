@@ -22,7 +22,7 @@ export const sidebarSlice = createSlice({
        setAnalysis: (state, action) => {
         state.analysis = action.payload
        },
-       setSavingAlalysis: (state) => {
+       setSavingAnalysis: (state) => {
         state.isSaving = true
         state.messageSaved = ''
        },
@@ -51,6 +51,6 @@ export const {
     setAnalysis,
     setAnalysisActivate,
     setPhotosToActivateTesis,
-    setSavingAlalysis,
+    setSavingAnalysis,
     updateAnalysis,
 } = sidebarSlice.actions

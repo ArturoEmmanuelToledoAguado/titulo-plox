@@ -1,2 +1,3 @@
-export { sidebarSlice } from './sidebarSlice';
-export { startNewAnalysis } from './thunks';
+
+export * from './sidebarSlice';
+export { startLoadingTesis, startNewAnalysis, startSaveAnalysis } from './thunks';

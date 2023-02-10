@@ -2,11 +2,11 @@ import { AccountBox, FileCopy, Home, Settings } from '@mui/icons-material'
 import { ListItem, ListItemButton, ListItemIcon } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { setButtonActivate } from '../../store/sidebar/sidebarSlice'
+import { savingNewTesis } from '../../store/sidebar/sidebarSlice'
 
 export const SideBarItem = ({value}) => {
     const dispatch = useDispatch()
-    const onClickPage = () => dispatch(setButtonActivate(value))
+    const onClickPage = () => dispatch(savingNewTesis(value))
   return (
     <ListItem disablePadding>
         <ListItemButton onClick= {onClickPage}>

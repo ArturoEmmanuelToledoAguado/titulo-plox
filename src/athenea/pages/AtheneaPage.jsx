@@ -2,15 +2,23 @@ import { IconButton } from "@mui/material"
 import { AtheneaLayout } from "../layout/AtheneaLayout"
 import { FileList, NoteView, NothingSelectedView } from "../views"
 import { AddOutlined, FileUpload } from "@mui/icons-material"
+import { useDispatch, useSelector } from "react-redux"
+import { startNewAnalysis } from "../../store/sidebar"
 
 export const AtheneaPage = () => {
+
+  const dispatch = useDispatch()
+  const {isSaving, active} = useSelector(state => state.sidebar)
+  const onClickNewTesis = () => dispatch(startNewAnalysis())
   return (
     <AtheneaLayout>
       {/* <NoteView/> */}
       {/* <NothingSelectedView /> */}
-      <FileList />
+      {(!!active)?<FileList />: <FileList />}
+      
 
       <IconButton
+        onClick={onClickNewTesis}
         size='large'
         sx= {{
           color: 'white',

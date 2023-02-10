@@ -20,7 +20,7 @@ export const NothingSelectedView = () => {
         <Grid
             item
             xs= {12}>
-                <Typography>Selecciona una entrada</Typography>
+                <Typography>Carga una tesis para iniciar el analisis</Typography>
 
         </Grid>
     </Grid>

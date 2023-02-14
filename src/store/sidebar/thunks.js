@@ -1,6 +1,6 @@
 import { savingNewTesis, setSavingAnalysis } from "./sidebarSlice"
 import bcrypt from 'bcryptjs'
-import { fileUpload, loadTesis } from "../../helpers"
+import { fileDelete, fileUpload, loadTesis } from "../../helpers"
 
 export const startNewAnalysis = (file = []) => {
     return async (dispatch, getState) => {
@@ -8,12 +8,12 @@ export const startNewAnalysis = (file = []) => {
         const {uid, displayName} = getState().auth
         if (!uid) throw new Error(`Usuario ${displayName} sin acceso`)
         const node = Math.abs(bcrypt.hashSync(uid, bcrypt.genSaltSync(10)).replace(/[^0-9]+/g, "")) % 4
-        const tesis = await fileUpload(file) // You must return an OK and the node where I keep it
-        const newTesis = {
-            title: '',
-            date: new Date().getTime(),
-            tesis
-        }
+        // const tesis = await fileUpload(file) // You must return an OK and the node where I keep it
+        // const newTesis = {
+        //     title: '',
+        //     date: new Date().getTime(),
+        //     tesis
+        // }
         //Once you have this, you send it complete to back
         dispatch(addNewEmptyAnalysis(newTesis))
         dispatch(setAnalysisActivate(newTesis))
@@ -43,3 +43,12 @@ export const startSaveAnalysis = () => {
 
     }
 }
+
+export const startDeletingTesis = () => {
+    return async (dispatch, getState) => {
+        const {uid, displayName} = getState().auth
+        const {active: activeAnalysis} = getState().auth
+        const tesis = await fileDelete(activeAnalysis.id) // You must return an OK and the node where I keep it
+    }
+}
+

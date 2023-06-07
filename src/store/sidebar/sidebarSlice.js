@@ -10,14 +10,20 @@ export const sidebarSlice = createSlice({
         active: null,
     },
    reducers : {
-       savingNewTesis: (state, action) => {state.value = action.payload},
+       savingNewTesis: (state, action) => {
+        state.isSaving = true
+        state.value = action.payload
+        },
        addNewEmptyAnalysis: (state, action) => {
         state.analysis.push(action.payload)
         state.isSaving = false
         },
        setAnalysisActivate: (state, action) => {
-        state.active = action.payload,
+        state.active = action.payload
         state.messageSaved = ''
+       },
+       changeStatus: (state) => {
+        state.active = null
        },
        setAnalysis: (state, action) => {
         state.analysis = action.payload
@@ -53,4 +59,5 @@ export const {
     setPhotosToActivateTesis,
     setSavingAnalysis,
     updateAnalysis,
+    changeStatus,
 } = sidebarSlice.actions

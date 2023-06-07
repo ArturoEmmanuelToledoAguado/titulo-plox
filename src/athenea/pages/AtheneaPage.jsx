@@ -8,18 +8,19 @@ import { startNewAnalysis } from "../../store/sidebar"
 export const AtheneaPage = () => {
 
   const dispatch = useDispatch()
-  const {isSaving, active} = useSelector(state => state.sidebar)
+  const {isSaving, active, analysis} = useSelector(state => state.sidebar)
   const onClickNewTesis = () => dispatch(startNewAnalysis())
+
   return (
     <AtheneaLayout>
       {/* <NoteView/> */}
       {/* <NothingSelectedView /> */}
-      {(!!active)?<FileList />: <FileList />}
-      
+      {(!!active)?<NoteView/>:(analysis.length > 0)?<FileList/>:<NothingSelectedView />}
 
       <IconButton
         onClick={onClickNewTesis}
         size='large'
+        disabled = {isSaving}
         sx= {{
           color: 'white',
           backgroundColor: 'error.main',

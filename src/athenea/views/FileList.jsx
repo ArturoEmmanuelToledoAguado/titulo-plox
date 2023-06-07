@@ -1,25 +1,15 @@
-import {List, ListItem, ListItemText, ListItemAvatar, Avatar, Button} from '@mui/material';
-import {Description } from '@mui/icons-material';
+import {List} from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAnalysisActivate } from '../../store/sidebar';
+import { File } from './File';
 
 export const FileList = () => {
+
+  const {analysis} = useSelector(state => state.sidebar)
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {[1, 2, 3].map((value) => (
-          <ListItem
-          className="animate__animated animate__fadeIn animate__faster"
-            key={value}
-            disableGutters>
-              <Button
-                color='button'
-                sx={{ width: '80%'}}>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <Description />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={`Tesis ${value}`}  secondary="Jan 9, 2014"/>
-              </Button>
-          </ListItem>
+        {analysis.map((note) => (
+          <File key={note.id} {...note}/>
         ))}
     </List>
   )

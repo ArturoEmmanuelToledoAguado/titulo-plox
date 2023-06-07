@@ -1,22 +1,33 @@
-import { savingNewTesis, setSavingAnalysis } from "./sidebarSlice"
+import { addNewEmptyAnalysis, savingNewTesis, setAnalysisActivate, setSavingAnalysis, setAnalysis, changeStatus} from "./sidebarSlice"
 import bcrypt from 'bcryptjs'
 import { fileUpload, loadTesis } from "../../helpers"
+import { collection, doc, setDoc } from "firebase/firestore/lite"
+import { FirebaseDB } from "../../firebase"
 
 export const startNewAnalysis = (file = []) => {
     return async (dispatch, getState) => {
         dispatch(savingNewTesis())
         const {uid, displayName} = getState().auth
         if (!uid) throw new Error(`Usuario ${displayName} sin acceso`)
-        const node = Math.abs(bcrypt.hashSync(uid, bcrypt.genSaltSync(10)).replace(/[^0-9]+/g, "")) % 4
-        const tesis = await fileUpload(file) // You must return an OK and the node where I keep it
+        // const node = Math.abs(bcrypt.hashSync(uid, bcrypt.genSaltSync(10)).replace(/[^0-9]+/g, "")) % 4
+        // const tesis = await fileUpload(file) // You must return an OK and the node where I keep it
         const newTesis = {
             title: '',
-            date: new Date().getTime(),
-            tesis
+            date: new Date().toDateString(),
         }
+        const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`))
+        const setDocResp = await setDoc(newDoc, newTesis)
+        newTesis.id = newDoc.id
         //Once you have this, you send it complete to back
         dispatch(addNewEmptyAnalysis(newTesis))
+
         dispatch(setAnalysisActivate(newTesis))
+    }
+}
+
+export const inActiveAnalisis = () => {
+    return async (dispatch) => {
+        dispatch(changeStatus())
     }
 }
 

@@ -1,10 +1,12 @@
+import { collection, getDocs } from "firebase/firestore/lite"
+import { FirebaseDB } from "../firebase"
+
 export const loadTesis = async(uid = '') => {
+  const collectionRef = collection(FirebaseDB, `${uid}/journal/notes`)
+  const docs = await getDocs(collectionRef)
 
-    //Aquí hay que tomar la tesis y disparar el analisis completo pasandole el archivo a las APIS
-
-    const analysis = []
-
-    //Y luego se va agregando al analysis
-
-  return analysis
+  const tesis = []
+  docs.forEach(doc => tesis.push({id: doc.id, ...doc.data()}))
+  
+  return tesis
 }

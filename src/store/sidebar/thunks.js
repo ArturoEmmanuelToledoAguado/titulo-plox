@@ -54,3 +54,12 @@ export const startSaveAnalysis = () => {
 
     }
 }
+
+export const startDeletingTesis = () => {
+    return async (dispatch, getState) => {
+        const {uid, displayName} = getState().auth
+        const {active: activeAnalysis} = getState().auth
+        const tesis = await fileDelete(activeAnalysis.id) // You must return an OK and the node where I keep it
+    }
+}
+

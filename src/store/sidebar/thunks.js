@@ -1,4 +1,4 @@
-import { addNewEmptyAnalysis, savingNewTesis, setAnalysisActivate, setSavingAnalysis, setAnalysis, changeStatus} from "./sidebarSlice"
+import { addNewEmptyAnalysis, savingNewTesis, setAnalysisActivate, setSavingAnalysis, setAnalysis, changeStatus, sendTesis} from "./sidebarSlice"
 import bcrypt from 'bcryptjs'
 import { fileUpload, loadTesis } from "../../helpers"
 import { collection, doc, setDoc } from "firebase/firestore/lite"
@@ -13,6 +13,7 @@ export const startNewAnalysis = (file = []) => {
         // const tesis = await fileUpload(file) // You must return an OK and the node where I keep it
         const newTesis = {
             title: '',
+            tesis:  '',
             date: new Date().toDateString(),
         }
         const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`))
@@ -63,3 +64,8 @@ export const startDeletingTesis = () => {
     }
 }
 
+export const loadFile = (tesis) =>{
+    return async(dispatch, getState) => {
+        dispatch(sendTesis(tesis))
+    }
+}

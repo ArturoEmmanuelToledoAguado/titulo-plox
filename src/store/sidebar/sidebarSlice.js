@@ -5,6 +5,7 @@ export const sidebarSlice = createSlice({
    initialState : {
         isSaving: false,
         value : '',
+        tesis: null,
         analysis: [],
         messageSaved: '',
         active: null,
@@ -46,7 +47,11 @@ export const sidebarSlice = createSlice({
         state.isSaving = false
         state.active = null
         state.analysis = state.analysis.filter(tesis => tesis.id !== action.payload)
+       },
+       sendTesis: (state, action) => {
+        state.tesis = action.payload
        }
+
    }
 })
 
@@ -60,4 +65,5 @@ export const {
     setSavingAnalysis,
     updateAnalysis,
     changeStatus,
+    sendTesis
 } = sidebarSlice.actions
